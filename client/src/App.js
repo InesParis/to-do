@@ -1,4 +1,5 @@
 import "./index.css";
+import ListItems from "./components/ListItems";
 import ListHeader from "./components/ListHeader";
 import { useEffect, useState } from "react";
 const App = () => {
@@ -14,9 +15,16 @@ const App = () => {
     }
   };
   useEffect(() => getData, []);
+  //Sort by date
+  const sortedTasks = tasks?.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
   return (
     <div className="app">
       <ListHeader listName={"👩🏻‍💻 Projects tick list"} />
+      {sortedTasks?.map((task) => (
+        <ListItems key={task.id} task={task} />
+      ))}
     </div>
   );
 };
