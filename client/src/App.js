@@ -7,15 +7,17 @@ const App = () => {
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
       const json = await response.json();
+      console.log(json);
     } catch (err) {
       console.error(err);
     }
   };
+  useEffect(() => getData, []);
   return (
     <div className="app">
       <ListHeader listName={"👩🏻‍💻 Projects tick list"} />
     </div>
   );
 };
-useEffect(() => getData, []);
+
 export default App;
