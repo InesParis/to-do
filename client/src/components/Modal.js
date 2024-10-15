@@ -10,10 +10,11 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
 
   const postData = async (e) => {
     e.preventDefault();
+    console.log("Dara being sent:", data);
     try {
       const response = await fetch("http://localhost:8000/todos", {
         method: "POST",
-        header: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.status === 200) {

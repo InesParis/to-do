@@ -9,12 +9,15 @@ const App = () => {
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
       const json = await response.json();
+      console.log("API Response:", json);
       setTasks(json);
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching data:", err);
     }
   };
-  useEffect(() => getData, []);
+  useEffect(() => {
+    getData();
+  }, []);
   //Sort by date
   const sortedTasks = tasks?.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
