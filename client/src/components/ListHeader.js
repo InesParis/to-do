@@ -17,7 +17,7 @@ const ListHeader = ({ listName, getData }) => {
         </button>
       </div>
       {showModal && (
-        <Modal mode={"edit"} setShowModal={setShowModal} getData={getData} />
+        <Modal mode={"create"} setShowModal={setShowModal} getData={getData} />
       )}
     </div>
   );
